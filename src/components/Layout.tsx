@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import { Box } from 'lucide-react';
 
 interface LayoutProps {
@@ -7,7 +6,6 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-    const { theme } = useTheme();
 
     return (
         <div className={`min-h-screen font-sans bg-white text-slate-900`}>
@@ -17,7 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
                     <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
                         <Box className="w-6 h-6" />
                     </div>
-                    <span className="text-2xl font-black tracking-tighter text-slate-900 uppercase">Lumina</span>
+                    <span className="text-2xl font-black tracking-tighter text-slate-900 uppercase">Dash</span>
                 </div>
             </nav>
 
@@ -30,7 +28,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
             {/* Simple Footer */}
             <footer className="bg-slate-50 border-t border-slate-200 py-12 px-6 lg:px-12 text-center text-slate-400 text-sm font-medium">
-                © 2026 Lumina Wallet. All rights reserved.
+                © 2026 Dash Wallet. All rights reserved.
             </footer>
         </div>
     );

@@ -1,4 +1,4 @@
-# Lumina - Web-Based Crypto Wallet
+# Dash - Web-Based Crypto Wallet
 
 A secure, educational, non-custodial web wallet for Ethereum and Solana, built with React and TypeScript.
 

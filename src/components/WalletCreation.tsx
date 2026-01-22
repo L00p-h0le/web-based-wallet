@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { WalletVault } from '../core/wallet/vault';
-import { Copy, RefreshCw, ArrowRight, Wallet as WalletIcon, Import, Check, PlusCircle } from 'lucide-react';
+import { RefreshCw, ArrowRight, Import, Check, PlusCircle } from 'lucide-react';
 
 interface WalletCreationProps {
     onWalletCreated: () => void;
@@ -58,7 +58,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
 
             <div className="mb-12">
                 <h1 className="text-6xl font-black text-slate-900 mb-6 tracking-tight">
-                    Welcome to <span className="text-indigo-600">Lumina</span>
+                    Welcome to <span className="text-indigo-600">Dash</span>
                 </h1>
                 <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
                     The beautiful, secure, and intuitive multi-chain wallet.
@@ -68,7 +68,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
             <div className="card max-w-2xl mx-auto">
                 {mnemonic.length > 0 ? (
                     <div className="space-y-8">
-                        <h2 className="text-2xl font-bold">Safe Your Secret Phrase</h2>
+                        <h2 className="text-2xl font-bold">Save Your Secret Phrase</h2>
                         <div className="grid grid-cols-3 gap-3 p-6 bg-slate-50 rounded-2xl border border-slate-100">
                             {mnemonic.map((word, i) => (
                                 <div key={i} className="bg-white p-2 rounded-lg border border-slate-100 text-sm font-mono font-bold text-slate-700">

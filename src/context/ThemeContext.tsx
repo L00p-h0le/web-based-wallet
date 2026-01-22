@@ -11,7 +11,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    // Lumina defaults to a light theme with specific brand accents
+    // Dash defaults to a light theme with specific brand accents
     const [theme, setTheme] = useState<Theme>('light');
 
     useEffect(() => {
