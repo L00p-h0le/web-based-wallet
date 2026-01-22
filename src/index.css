@@ -1,35 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+  --color-brand-950: #2e1065;
+  --color-brand: #6366f1;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-accent: #8b5cf6;
+  --color-accent-dark: #7c3aed;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2.5rem;
+
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-body {
-  margin: 0;
-  display: block;
-  min-width: 320px;
-  min-height: 100vh;
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .text-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
+
+  .btn-primary {
+    @apply bg-brand text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.02] hover:bg-brand-600 active:scale-95 shadow-lg shadow-brand/20;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-50 text-slate-900 font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-slate-100 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl p-8 shadow-subtle border border-slate-50 hover:shadow-premium transition-all duration-500;
+  }
+
+  /* Disabled fade-in opacity for debugging */
+  .fade-in {
+    opacity: 1 !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

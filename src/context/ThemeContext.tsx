@@ -11,18 +11,17 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    // Default to dark mode for that premium feel
-    const [theme] = useState<Theme>('dark');
+    // Lumina defaults to a light theme with specific brand accents
+    const [theme, setTheme] = useState<Theme>('light');
 
     useEffect(() => {
         const root = window.document.documentElement;
-        root.classList.remove('light');
-        root.classList.add('dark');
-        console.log('Enforced Dark Mode');
-    }, []);
+        root.classList.remove(theme === 'light' ? 'dark' : 'light');
+        root.classList.add(theme);
+    }, [theme]);
 
     const toggleTheme = () => {
-        // No-op: Theme is locked to dark
+        setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
     };
 
     return (

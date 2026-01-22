@@ -5,6 +5,8 @@ import { Layout, WalletCreation, WalletDashboard } from './components';
 function App() {
   const [walletCreated, setWalletCreated] = useState(false);
 
+  console.log("App Rendering, mode:", walletCreated ? "Dashboard" : "Creation");
+
   return (
     <ThemeProvider>
       <Layout>
