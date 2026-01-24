@@ -1,38 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Vibrant gradient-based color palette */
-  --color-brand-50: #f5f3ff;
-  --color-brand-100: #ede9fe;
-  --color-brand-200: #ddd6fe;
-  --color-brand-300: #c4b5fd;
-  --color-brand-400: #a78bfa;
-  --color-brand-500: #8b5cf6;
-  --color-brand-600: #7c3aed;
-  --color-brand-700: #6d28d9;
-  --color-brand-800: #5b21b6;
-  --color-brand-900: #4c1d95;
-  --color-brand-950: #2e1065;
-  --color-brand: #8b5cf6;
+  /* Light Slate color palette */
+  --color-arctic-50: #F8FAFC;
+  --color-arctic-100: #F0F4F8;
 
-  --color-accent: #6366f1;
-  --color-accent-dark: #4f46e5;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+
+  --color-softblue-400: #60A5FA;
+  --color-softblue-500: #3B82F6;
+  --color-softblue-600: #2563EB;
 
   --color-success: #10b981;
   --color-error: #ef4444;
   --color-warning: #f59e0b;
 
-  /* Premium shadows */
-  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-premium: 0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 10px 10px -5px rgba(139, 92, 246, 0.04);
-  --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.3);
+  /* Light Slate shadows */
+  --shadow-subtle: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.3);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Radius tokens */
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
+  --radius-3xl: 2.5rem;
   --radius-full: 9999px;
 }
 
@@ -99,13 +98,15 @@
 
 @layer base {
   :root {
-    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background: linear-gradient(to bottom right, #f8fafc, rgba(243, 232, 255, 0.3), rgba(224, 242, 254, 0.2));
+    background-color: #F0F4F8;
+    background-image: radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.5) 0, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(59, 130, 246, 0.05) 0, transparent 50%);
     background-attachment: fixed;
   }
 }
@@ -131,7 +132,7 @@
   /* Text gradients */
   .text-gradient,
   .gradient-text {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #475569 0%, #3B82F6 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -141,18 +142,19 @@
 
   /* Buttons */
   .btn-primary {
-    background-image: linear-gradient(to right, #7c3aed, #6366f1);
+    background: linear-gradient(135deg, #475569 0%, #3B82F6 100%);
     color: white;
     font-weight: 700;
     padding: 0.875rem 2rem;
-    border-radius: 9999px;
-    transition: all 0.3s;
+    border-radius: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-xl);
   }
 
   .btn-primary:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+    filter: brightness(1.05);
   }
 
   .btn-primary:active {
@@ -161,18 +163,19 @@
 
   .btn-secondary {
     background-color: white;
-    color: #0f172a;
+    color: #334155;
     font-weight: 700;
     padding: 0.875rem 2rem;
-    border-radius: 9999px;
+    border-radius: 1rem;
     transition: all 0.3s;
     box-shadow: var(--shadow-subtle);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #E2E8F0;
   }
 
   .btn-secondary:hover {
-    background-color: #f8fafc;
-    box-shadow: var(--shadow-xl);
+    background-color: #F8FAFC;
+    border-color: #3B82F6;
+    transform: scale(1.01);
   }
 
   .btn-secondary:active {
@@ -185,28 +188,28 @@
     border-radius: 1.5rem;
     padding: 2rem;
     box-shadow: var(--shadow-subtle);
-    border: 1px solid #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 1);
     transition: all 0.5s;
   }
 
   .card:hover {
     box-shadow: var(--shadow-premium);
-    border-color: #e9d5ff;
+    border-color: #E2E8F0;
   }
 
-  /* Premium card with glow */
+  /* Premium card with clean white background */
   .card-premium {
-    background: linear-gradient(to bottom right, white, rgba(243, 232, 255, 0.3));
-    border-radius: 1.5rem;
+    background: white;
+    border-radius: 2.5rem;
     padding: 2rem;
-    box-shadow: var(--shadow-subtle);
-    border: 1px solid #f1f5f9;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(255, 255, 255, 1);
     transition: all 0.5s;
+    position: relative;
   }
 
   .card-premium:hover {
     box-shadow: var(--shadow-premium);
-    border-color: #e9d5ff;
   }
 
   /* Animations */
@@ -253,9 +256,9 @@
 
   /* Mono font for addresses */
   .font-mono-address {
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-weight: 600;
-    letter-spacing: -0.025em;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
   /* Shimmer effect for loading states */
@@ -274,7 +277,50 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Light Slate UI Components */
+  .mesh-gradient-light {
+    background-image:
+      radial-gradient(at 0% 0%, rgba(203, 213, 225, 0.2) 0, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(241, 245, 249, 0.5) 0, transparent 50%);
+  }
+
+  .primary-accent {
+    background: #475569;
+  }
+
+  .tab-underline {
+    position: relative;
+  }
+
+  .tab-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #475569;
+    transition: width 0.3s ease;
+  }
+
+  .tab-active::after {
+    width: 100%;
+  }
+
+  .wallet-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+  }
+
+  .glass-nav-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   }
 }
 

@@ -9,7 +9,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Layout>
+      <Layout hideNavbar={!walletCreated}>
         {!walletCreated ? (
           <WalletCreation onWalletCreated={() => setWalletCreated(true)} />
         ) : (

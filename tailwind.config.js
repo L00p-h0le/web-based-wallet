@@ -7,37 +7,53 @@ export default {
     theme: {
         extend: {
             colors: {
+                arctic: {
+                    50: '#F8FAFC',
+                    100: '#F0F4F8',
+                },
+                slate: {
+                    50: '#f8fafc',
+                    100: '#f1f5f9',
+                    200: '#e2e8f0',
+                    300: '#cbd5e1',
+                    400: '#94a3b8',
+                    500: '#64748b',
+                    600: '#475569',
+                    700: '#334155',
+                    800: '#1e293b',
+                    900: '#0f172a',
+                },
+                'background-light': '#f8fafc',
+                'surface-white': '#ffffff',
+                softblue: {
+                    400: '#60A5FA',
+                    500: '#3B82F6',
+                    600: '#2563EB',
+                },
+                // Keep brand for backwards compatibility
                 brand: {
-                    50: '#f5f3ff',
-                    100: '#ede9fe',
-                    200: '#ddd6fe',
-                    300: '#c4b5fd',
-                    400: '#a78bfa',
-                    500: '#8b5cf6',
-                    600: '#7c3aed',
-                    700: '#6d28d9',
-                    800: '#5b21b6',
-                    900: '#4c1d95',
-                    950: '#2e1065',
-                    DEFAULT: '#6366F1', // Vibrant purple from images
-                },
-                accent: {
-                    DEFAULT: '#8B5CF6',
-                    dark: '#7C3AED',
-                },
-                background: {
-                    light: '#F8FAFC',
-                    DEFAULT: '#FFFFFF',
+                    DEFAULT: '#3B82F6',
+                    200: '#bfdbfe',
+                    400: '#60a5fa',
+                    500: '#3b82f6',
+                    600: '#2563EB',
                 }
             },
+            fontFamily: {
+                display: ['Inter', 'sans-serif'],
+                sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            },
             borderRadius: {
-                'xl': '1rem',
-                '2xl': '1.5rem',
+                DEFAULT: '1rem',
+                'xl': '1.5rem',
+                '2xl': '2rem',
                 '3xl': '2.5rem',
             },
             boxShadow: {
-                'subtle': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'subtle': '0 20px 40px -15px rgba(15, 23, 42, 0.08)',
                 'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                'glow': '0 0 40px rgba(59, 130, 246, 0.3)',
             }
         },
     },

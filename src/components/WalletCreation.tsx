@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { WalletVault } from '../core/wallet/vault';
-import { RefreshCw, ArrowRight, Import, Check, Sparkles, Shield, Key } from 'lucide-react';
+import { ArrowRight, Check, Shield } from 'lucide-react';
 
 interface WalletCreationProps {
     onWalletCreated: () => void;
@@ -46,7 +46,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto px-6 lg:px-12 py-8">
+        <div className="w-full mx-auto px-4 py-8">
             {/* Copy Toast Notification */}
             {showCopyToast && (
                 <div className="fixed top-24 right-8 z-50 animate-fadeInUp">
@@ -57,100 +57,101 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
                 </div>
             )}
 
-            {/* Hero Section */}
-            <div className="text-center mb-6 stagger-animation">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100/50 border border-purple-200/50 rounded-full mb-3">
-                    <Sparkles className="w-3.5 h-3.5 text-brand-600" />
-                    <span className="text-xs font-bold text-brand-700">Multi-Chain Wallet</span>
-                </div>
-
-                <h1 className="text-3xl md:text-4xl font-black tracking-tight">
-                    Welcome to <span className="gradient-text">CryptoVault</span>
-                </h1>
-
-
-            </div>
-
             {/* Main Card */}
-            <div className="card-premium max-w-2xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-                {mnemonic.length > 0 ? (
-                    // Mnemonic Display
-                    <div className="space-y-6">
-                        <div className="text-center">
-                            <div className="w-14 h-14 bg-gradient-to-br from-brand-500 to-accent rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
-                                <Shield className="w-7 h-7 text-white" />
-                            </div>
-                            <h2 className="text-2xl font-black text-slate-900 mb-1">Save Your Secret Phrase</h2>
-                            <p className="text-slate-500 font-medium text-sm">
-                                Write this down and store it in a safe place. You'll need it to recover your wallet.
+            {mnemonic.length > 0 ? (
+                // Centered Mnemonic Display (No Navbar)
+                <div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
+                    {/* Centered CryptoVault Text Only */}
+                    <div className="mb-6 text-center">
+                        <span className="text-xl font-bold tracking-tight text-slate-800">Crypto<span className="text-blue-600">Vault</span></span>
+                    </div>
+
+                    {/* Main Card */}
+                    <main className="w-full max-w-xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_40px_-15px_rgba(15,23,42,0.08)] border border-white relative overflow-hidden">
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-softblue-100/50 blur-[80px] rounded-full"></div>
+                        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-slate-200/40 blur-[80px] rounded-full"></div>
+
+                        <div className="text-center mb-10 relative z-10">
+                            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 tracking-tight">Secret Recovery Phrase</h1>
+                            <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
+                                This 12-word phrase is the master key to your wallet. Keep it safe and never share it with anyone.
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 p-4 bg-gradient-to-br from-slate-50 to-purple-50/30 rounded-2xl border border-purple-100/50 shadow-inner">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 relative z-10">
                             {mnemonic.map((word, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white p-3 rounded-xl border border-slate-200/80 hover:border-brand-300 transition-all hover:shadow-md group"
-                                    style={{ animationDelay: `${i * 0.05}s` }}
+                                    className="bg-white border border-slate-200 rounded-xl p-3.5 flex items-center gap-3 hover:border-slate-300 hover:bg-slate-50 transition-all"
                                 >
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-xs font-black text-slate-300 w-5">{i + 1}</span>
-                                        <span className="font-mono-address text-xs text-slate-800 group-hover:text-brand-600 transition-colors">
-                                            {word}
-                                        </span>
-                                    </div>
+                                    <span className="text-[10px] font-bold text-blue-500/60 w-5">{String(i + 1).padStart(2, '0')}</span>
+                                    <span className="font-mono text-slate-800 font-medium text-sm tracking-wide">
+                                        {word}
+                                    </span>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <button
-                                onClick={copyToClipboard}
-                                className="btn-secondary flex-1 flex items-center justify-center gap-2"
-                            >
-                                <Key className="w-5 h-5" />
-                                Copy Phrase
-                            </button>
+                        <div className="flex flex-col sm:flex-row-reverse gap-3 relative z-10">
                             <button
                                 onClick={confirmCreation}
-                                className="btn-primary flex-[2] flex items-center justify-center gap-2"
+                                className="flex-[1.5] px-8 py-4 rounded-2xl bg-gradient-to-r from-slate-700 to-softblue-500 text-white font-semibold transition-all flex items-center justify-center gap-2 group shadow-lg hover:translate-y-[-2px] hover:shadow-[0_10px_20px_-5px_rgba(59,130,246,0.3)]"
                             >
-                                <Check className="w-5 h-5" />
-                                I've Saved It Securely
+                                Next Step
+                                <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                            <button
+                                onClick={copyToClipboard}
+                                className="flex-1 px-8 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-600 font-semibold transition-all border border-slate-200 flex items-center justify-center gap-2 hover:border-softblue-500 hover:scale-[1.01]"
+                            >
+                                <span className="material-symbols-outlined text-lg">content_copy</span>
+                                Copy Phrase
                             </button>
                         </div>
+                    </main>
 
-                        <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 flex gap-3">
-                            <div className="text-brand-600 mt-0.5">
-                                <Shield className="w-5 h-5" />
-                            </div>
-                            <div className="text-sm text-purple-900">
-                                <p className="font-bold mb-1">Security Notice</p>
-                                <p className="text-purple-700">
-                                    Never share your secret phrase. Anyone with access to it can control your funds.
-                                </p>
-                            </div>
+                    {/* Footer */}
+                    <footer className="mt-8 flex flex-col items-center gap-3">
+                        <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">
+                            End-to-End Encrypted • <a className="text-slate-600 hover:text-blue-600 transition-colors underline underline-offset-4 decoration-slate-200" href="#">Security Guide</a>
+                        </p>
+                        <div className="flex gap-1.5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
                         </div>
+                    </footer>
+                </div>
+            ) : isImporting ? (
+                // Import Wallet
+                <div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
+                    {/* CryptoVault Header - Top Left */}
+                    <div className="fixed top-0 left-0 w-full px-8 py-6">
+                        <span className="text-2xl font-extrabold tracking-tight text-slate-900">
+                            Crypto<span className="text-softblue-600">Vault</span>
+                        </span>
                     </div>
-                ) : isImporting ? (
-                    // Import Wallet
-                    <div className="space-y-6">
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-gradient-to-br from-brand-500 to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <Import className="w-8 h-8 text-white" />
-                            </div>
-                            <h2 className="text-3xl font-black text-slate-900 mb-2">Import Your Wallet</h2>
-                            <p className="text-slate-500 font-medium">
-                                Enter your 12-word secret recovery phrase
-                            </p>
+
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 tracking-tighter text-slate-900">
+                        Secure your <br />
+                        <span className="text-softblue-600">Digital Future</span>
+                    </h1>
+
+                    <div className="w-full max-w-xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_40px_-15px_rgba(15,23,42,0.08)] border border-white relative overflow-hidden">
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-softblue-100/50 blur-[80px] rounded-full"></div>
+                        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-slate-200/40 blur-[80px] rounded-full"></div>
+
+                        <div className="text-center mb-12 relative z-10">
+                            <h2 className="text-3xl font-bold mb-3 text-slate-900">Import Your Wallet</h2>
+                            <p className="text-slate-500 text-sm">Enter your 12-word secret recovery phrase</p>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-4 relative z-10">
                             <textarea
                                 value={importInput}
                                 onChange={(e) => setImportInput(e.target.value)}
                                 placeholder="Enter your 12-word recovery phrase separated by spaces..."
-                                className="w-full h-40 p-5 bg-slate-50 border-2 border-slate-200 rounded-2xl outline-none focus:border-brand-500 focus:bg-white font-mono-address text-sm transition-all resize-none"
+                                className="w-full h-40 p-5 bg-slate-50 border-2 border-slate-200 rounded-2xl outline-none focus:border-softblue-500 focus:bg-white font-mono text-sm transition-all resize-none"
                             />
 
                             {error && (
@@ -165,84 +166,83 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
                             )}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4 mt-8 relative z-10">
                             <button
                                 onClick={() => setIsImporting(false)}
-                                className="btn-secondary flex-1"
+                                className="flex-1 px-6 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-600 font-semibold transition-all border border-slate-200 hover:border-softblue-500 hover:scale-[1.01]"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={submitImport}
-                                className="btn-primary flex-[2] flex items-center justify-center gap-2"
+                                className="flex-[2] px-6 py-4 rounded-2xl bg-gradient-to-r from-slate-700 to-softblue-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg hover:translate-y-[-2px] hover:shadow-[0_10px_20px_-5px_rgba(59,130,246,0.3)] transition-all"
                             >
                                 <ArrowRight className="w-5 h-5" />
                                 Import Wallet
                             </button>
                         </div>
                     </div>
-                ) : (
-                    // Initial Choice
-                    <div className="space-y-4">
-                        <div className="text-center mb-6">
-                            <h2 className="text-2xl font-black text-slate-900 mb-2">Get Started</h2>
-                            <p className="text-slate-500 font-medium text-sm">
-                                Create a new wallet or import an existing one
-                            </p>
+                </div>
+            ) : (
+                // Initial Choice - Get Started (matches reference design)
+                <div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
+                    {/* CryptoVault Header - Top Left */}
+                    <div className="fixed top-0 left-0 w-full px-8 py-6">
+                        <span className="text-2xl font-extrabold tracking-tight text-slate-900">
+                            Crypto<span className="text-softblue-600">Vault</span>
+                        </span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 tracking-tighter text-slate-900">
+                        Secure your <br />
+                        <span className="text-softblue-600">Digital Future</span>
+                    </h1>
+
+                    <div className="w-full max-w-xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_40px_-15px_rgba(15,23,42,0.08)] border border-white relative overflow-hidden">
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-softblue-100/50 blur-[80px] rounded-full"></div>
+                        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-slate-200/40 blur-[80px] rounded-full"></div>
+
+                        <div className="text-center mb-12 relative z-10">
+                            <h2 className="text-3xl font-bold mb-3 text-slate-900">Get Started</h2>
+                            <p className="text-slate-500 text-sm">Sophisticated asset custody for the modern era</p>
                         </div>
 
-                        <div className="grid gap-3">
+                        <div className="space-y-5 relative z-10">
                             <button
                                 onClick={handleCreate}
-                                className="group relative overflow-hidden bg-gradient-to-r from-brand-600 to-accent text-white font-bold py-5 px-6 rounded-2xl hover:shadow-glow transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                                className="group w-full p-6 rounded-2xl bg-gradient-to-r from-slate-700 to-softblue-500 flex items-center justify-between text-white shadow-lg hover:translate-y-[-2px] hover:shadow-[0_10px_20px_-5px_rgba(59,130,246,0.3)] hover:brightness-105 transition-all"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="p-2.5 bg-white/20 rounded-xl group-hover:bg-white/30 transition-colors">
-                                            <RefreshCw className="w-6 h-6" />
-                                        </div>
-                                        <div className="text-left">
-                                            <div className="text-lg font-black mb-0.5">Create New Wallet</div>
-                                            <div className="text-purple-100 text-xs font-medium">Generate a fresh recovery phrase</div>
-                                        </div>
+                                <div className="flex items-center gap-5">
+                                    <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                                        <span className="material-symbols-outlined text-white text-3xl">add_card</span>
                                     </div>
-                                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                    <div className="text-left">
+                                        <div className="text-lg font-extrabold text-white">Create New Wallet</div>
+                                        <div className="text-sm font-medium opacity-80">Initialize secure seed phrase</div>
+                                    </div>
                                 </div>
+                                <span className="material-symbols-outlined font-bold group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </button>
 
                             <button
                                 onClick={handleImport}
-                                className="group bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-brand-300 text-slate-900 font-bold py-5 px-6 rounded-2xl transition-all duration-300 hover:shadow-xl active:scale-95"
+                                className="group w-full p-6 rounded-2xl bg-white border border-slate-200 flex items-center justify-between hover:border-softblue-500 hover:bg-slate-50 hover:scale-[1.01] transition-all"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="p-2.5 bg-brand-50 group-hover:bg-brand-100 rounded-xl transition-colors">
-                                            <Import className="w-6 h-6 text-brand-600" />
-                                        </div>
-                                        <div className="text-left">
-                                            <div className="text-lg font-black mb-0.5">Import Existing Wallet</div>
-                                            <div className="text-slate-500 text-xs font-medium">Use your recovery phrase</div>
-                                        </div>
+                                <div className="flex items-center gap-5">
+                                    <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-slate-600 text-3xl">key_visualizer</span>
                                     </div>
-                                    <ArrowRight className="w-6 h-6 text-slate-400 group-hover:translate-x-1 transition-transform" />
+                                    <div className="text-left">
+                                        <div className="text-lg font-bold text-slate-900 group-hover:text-softblue-600 transition-colors">Import Existing</div>
+                                        <div className="text-sm text-slate-500">Restore from recovery phrase</div>
+                                    </div>
                                 </div>
+                                <span className="material-symbols-outlined text-slate-400 group-hover:text-softblue-600 group-hover:translate-x-1 transition-all">chevron_right</span>
                             </button>
                         </div>
-
-                        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex gap-3 mt-8">
-                            <div className="text-blue-600 mt-0.5">
-                                <Sparkles className="w-5 h-5" />
-                            </div>
-                            <div className="text-sm text-blue-900">
-                                <p className="font-bold mb-1">Educational Purpose</p>
-                                <p className="text-blue-700">
-                                    This wallet is for learning and testing. Do not use it with real funds on mainnet.
-                                </p>
-                            </div>
-                        </div>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 };
