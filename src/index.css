@@ -4,7 +4,9 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light Slate color palette */
+  /* Smoky Black & Floral White color palette */
+  --color-smoky-black: #11120D;
+  --color-floral-white: #FFFBF4;
   --color-arctic-50: #F8FAFC;
   --color-arctic-100: #F0F4F8;
 
@@ -22,11 +24,11 @@
   --color-error: #ef4444;
   --color-warning: #f59e0b;
 
-  /* Light Slate shadows */
-  --shadow-subtle: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
-  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.3);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* Dark theme shadows */
+  --shadow-subtle: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 40px rgba(255, 251, 244, 0.15);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 
   /* Radius tokens */
   --radius-xl: 1rem;
@@ -104,35 +106,33 @@
   }
 
   body {
-    background-color: #F0F4F8;
-    background-image: radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.5) 0, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(59, 130, 246, 0.05) 0, transparent 50%);
-    background-attachment: fixed;
+    background-color: #11120D;
+    color: #FFFBF4;
   }
 }
 
 @layer components {
 
-  /* Glass effect */
+  /* Glass effect - Dark theme */
   .glass {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(17, 18, 13, 0.8);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 251, 244, 0.1);
   }
 
   .glass-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(17, 18, 13, 0.9);
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
-    border: 1px solid rgba(196, 181, 253, 0.5);
+    border: 1px solid rgba(255, 251, 244, 0.15);
     box-shadow: var(--shadow-premium);
   }
 
-  /* Text gradients */
+  /* Text gradients - Dark theme */
   .text-gradient,
   .gradient-text {
-    background: linear-gradient(135deg, #475569 0%, #3B82F6 100%);
+    background: linear-gradient(135deg, #FFFBF4 0%, rgba(255, 251, 244, 0.7) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -140,21 +140,21 @@
     animation: gradient-shift 6s ease infinite;
   }
 
-  /* Buttons */
+  /* Buttons - CTA with Floral White */
   .btn-primary {
-    background: linear-gradient(135deg, #475569 0%, #3B82F6 100%);
-    color: white;
+    background-color: #FFFBF4;
+    color: #11120D;
     font-weight: 700;
     padding: 0.875rem 2rem;
     border-radius: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 4px 14px -3px rgba(255, 251, 244, 0.25);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
-    filter: brightness(1.05);
+    box-shadow: 0 10px 25px -5px rgba(255, 251, 244, 0.35);
+    filter: brightness(0.97);
   }
 
   .btn-primary:active {
@@ -162,19 +162,19 @@
   }
 
   .btn-secondary {
-    background-color: white;
-    color: #334155;
+    background-color: transparent;
+    color: #FFFBF4;
     font-weight: 700;
     padding: 0.875rem 2rem;
     border-radius: 1rem;
     transition: all 0.3s;
-    box-shadow: var(--shadow-subtle);
-    border: 1px solid #E2E8F0;
+    box-shadow: none;
+    border: 1px solid rgba(255, 251, 244, 0.3);
   }
 
   .btn-secondary:hover {
-    background-color: #F8FAFC;
-    border-color: #3B82F6;
+    background-color: rgba(255, 251, 244, 0.1);
+    border-color: #FFFBF4;
     transform: scale(1.01);
   }
 
@@ -182,28 +182,28 @@
     transform: scale(0.95);
   }
 
-  /* Cards */
+  /* Cards - Dark theme */
   .card {
-    background-color: white;
+    background-color: rgba(17, 18, 13, 0.95);
     border-radius: 1.5rem;
     padding: 2rem;
     box-shadow: var(--shadow-subtle);
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 251, 244, 0.1);
     transition: all 0.5s;
   }
 
   .card:hover {
     box-shadow: var(--shadow-premium);
-    border-color: #E2E8F0;
+    border-color: rgba(255, 251, 244, 0.2);
   }
 
-  /* Premium card with clean white background */
+  /* Premium card - Dark theme */
   .card-premium {
-    background: white;
+    background: rgba(17, 18, 13, 0.98);
     border-radius: 2.5rem;
     padding: 2rem;
-    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
-    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 251, 244, 0.1);
     transition: all 0.5s;
     position: relative;
   }
@@ -271,24 +271,24 @@
     animation: shimmer 2s infinite;
   }
 
-  /* Hover glow */
+  /* Hover glow - Dark theme */
   .hover-glow {
     transition: all 0.3s ease;
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 30px rgba(255, 251, 244, 0.2);
   }
 
-  /* Light Slate UI Components */
+  /* Smoky Black UI Components */
   .mesh-gradient-light {
     background-image:
-      radial-gradient(at 0% 0%, rgba(203, 213, 225, 0.2) 0, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(241, 245, 249, 0.5) 0, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(255, 251, 244, 0.03) 0, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(255, 251, 244, 0.02) 0, transparent 50%);
   }
 
   .primary-accent {
-    background: #475569;
+    background: #FFFBF4;
   }
 
   .tab-underline {
@@ -303,7 +303,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #475569;
+    background: #FFFBF4;
     transition: width 0.3s ease;
   }
 
@@ -312,15 +312,15 @@
   }
 
   .wallet-card {
-    background: #ffffff;
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+    background: rgba(17, 18, 13, 0.95);
+    border: 1px solid rgba(255, 251, 244, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
   }
 
   .glass-nav-light {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(17, 18, 13, 0.9);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    border-bottom: 1px solid rgba(255, 251, 244, 0.1);
   }
 }
 
@@ -339,8 +339,8 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom selection color */
+/* Custom selection color - Dark theme */
 ::selection {
-  background-color: rgba(139, 92, 246, 0.3);
-  color: inherit;
+  background-color: rgba(255, 251, 244, 0.3);
+  color: #11120D;
 }

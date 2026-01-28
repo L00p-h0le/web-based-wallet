@@ -7,6 +7,9 @@ export default {
     theme: {
         extend: {
             colors: {
+                // Primary theme colors
+                'smoky-black': '#11120D',
+                'floral-white': '#FFFBF4',
                 arctic: {
                     50: '#F8FAFC',
                     100: '#F0F4F8',
@@ -23,8 +26,8 @@ export default {
                     800: '#1e293b',
                     900: '#0f172a',
                 },
-                'background-light': '#f8fafc',
-                'surface-white': '#ffffff',
+                'background-dark': '#11120D',
+                'surface-dark': 'rgba(17, 18, 13, 0.95)',
                 softblue: {
                     400: '#60A5FA',
                     500: '#3B82F6',
