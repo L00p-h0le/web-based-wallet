@@ -1,8 +1,8 @@
-# Dash - Web-Based Crypto Wallet
+# Wault - Web-Based Crypto Wallet
 
 A secure, educational, non-custodial web wallet for Ethereum and Solana, built with React and TypeScript.
 
-## 🚀 Features
+## Features
 
 - **Multi-Chain Support**: Manage Ethereum and Solana wallets in one interface.
 - **BIP-39 Standard**: Generates standard 12-word mnemonic phrases.
@@ -11,7 +11,7 @@ A secure, educational, non-custodial web wallet for Ethereum and Solana, built w
 - **Zero-Storage**: Relax knowing your keys are gone effectively when you close the tab (Educational Mode).
 - **Responsive Design**: Beautiful, dark-mode first UI using Tailwind CSS.
 
-## 🏗 Architecture
+## Architecture
 
 The project follows a strict separation of concerns:
 
@@ -29,7 +29,7 @@ The project follows a strict separation of concerns:
 - `src/context/`: React Context providers.
 - `src/styles/`: Global CSS and Tailwind configurations.
 
-## 🛡 Security Model
+## Security Model
 
 1.  **Memory-Only Storage**: Mnemonic phrases are stored in a module-level variable within the vault. This variable is not exported and acts as a closure. It is reset on page reload.
 2.  **No Persistence**: We explicitly **do not** use `localStorage`, `sessionStorage`, or Cookies for sensitive data.
@@ -41,19 +41,19 @@ The project follows a strict separation of concerns:
 - OS is not compromised.
 - Physical access to the device is restricted while the tab is open.
 
-## ⚠️ Known Limitations
+## Known Limitations
 - **Data Loss on Refresh**: Since keys are memory-only, refreshing the page will require re-importing or regenerating the wallet.
 - **No Persistence**: No local history of transactions or addresses is saved.
 - **MVP Status**: Currently limited to address derivation and balance display (depending on implementation stage).
 
-## 🛤 Future Roadmap
+## Future Roadmap
 - [ ] Multi-account derivation (BIP-44 paths).
 - [ ] Transaction signing and broadcasting.
 - [ ] Token management (ERC-20/SPL).
 - [ ] NFT Gallery.
 - [ ] WalletConnect integration.
 
-## 🛠 Development
+## Development
 
 **Install Dependencies:**
 ```bash
@@ -70,6 +70,6 @@ npm run dev
 npm run build
 ```
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This wallet is intended for **educational purposes**. While it uses standard cryptographic libraries, it operates in a "transient" mode where data is lost on reload. **Do not use this for large amounts of real funds.**
