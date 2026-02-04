@@ -177,7 +177,7 @@ export const WalletDashboard = ({ onDeleteAll }: WalletDashboardProps) => {
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => setShowDeleteConfirm(wallet.index)}
-                                    className="p-2.5 text-[#FFFBF4]/40 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all border border-transparent"
+                                    className="p-2.5 text-[#FFFBF4]/40 hover:text-[#FFFBF4] hover:bg-[#FFFBF4]/10 rounded-lg transition-all border border-transparent"
                                     title="Delete Wallet"
                                 >
                                     <span className="material-symbols-outlined text-xl">delete</span>

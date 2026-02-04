@@ -63,7 +63,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
                 <div className="min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
                     {/* Centered CryptoVault Text Only */}
                     <div className="mb-6 text-center">
-                        <span className="text-3xl font-medium tracking-tight text-[#FFFBF4]">Crypto<span className="text-[#FFFBF4]/70">Vault</span></span>
+                        <span className="text-3xl font-medium tracking-tight text-[#FFFBF4]">Wa<span className="text-[#FFFBF4]/70">ult</span></span>
                     </div>
 
                     {/* Main Card */}
@@ -129,7 +129,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
                     {/* CryptoVault Header - Top Left */}
                     <div className="fixed top-0 left-0 w-full px-8 py-6">
                         <span className="text-4xl font-medium tracking-tight text-[#FFFBF4]">
-                            Crypto<span className="text-[#FFFBF4]/70">Vault</span>
+                            Wa<span className="text-[#FFFBF4]/70">ult</span>
                         </span>
                     </div>
 
@@ -190,7 +190,7 @@ export const WalletCreation = ({ onWalletCreated }: WalletCreationProps) => {
                     {/* CryptoVault Header - Top Left */}
                     <div className="fixed top-0 left-0 w-full px-8 py-6">
                         <span className="text-4xl font-medium tracking-tight text-[#FFFBF4]">
-                            Crypto<span className="text-[#FFFBF4]/70">Vault</span>
+                            Wa<span className="text-[#FFFBF4]/70">ult</span>
                         </span>
                     </div>
 
